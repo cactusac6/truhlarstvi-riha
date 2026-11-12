@@ -775,10 +775,10 @@ footer{background:var(--slate-deep);color:#D8CFC1;padding:80px 0 34px;position:r
     </div>
 
     <div class="contact-right reveal">
-      <form class="form-grid" id="contactForm" action="https://formsubmit.co/rimba@seznam.cz" method="POST">
+      <form class="form-grid" id="contactForm" action="https://contact-form-drab-six.vercel.app/api/contact" method="POST">
+<input type="hidden" name="_site" value="riha">
         <input type="hidden" name="_subject" value="Nová poptávka z webu Truhlářství Říha">
         <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://www.truhlarstvi-riha.com/?sent=1#kontakt">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="field"><label>Jméno</label><input type="text" name="Jméno" required placeholder="Vaše jméno"></div>
         <div class="field"><label>Telefon</label><input type="tel" name="Telefon" required placeholder="+420"></div>
@@ -1264,6 +1264,13 @@ if(new URLSearchParams(location.search).get('sent') === '1'){
   document.getElementById('formSuccess').classList.add('show');
   history.replaceState(null, '', location.pathname + location.hash);
 }
+</script>
+<script>
+(function(){var f=document.querySelector('#contactForm');if(!f)return;var st=document.createElement('p');st.setAttribute('role','status');st.style.cssText='margin-top:12px;font-size:14px';f.appendChild(st);
+function msg(t,bad){st.textContent=t;st.style.color=bad?'#c0392b':'inherit'}
+f.addEventListener('submit',function(e){e.preventDefault();var b=f.querySelector('[type=submit]'),t=b?b.textContent:'';
+if(b){b.disabled=true;b.textContent='Odesílám…'}msg('');
+fetch(f.action,{method:'POST',body:new FormData(f)}).then(function(r){return r.json().catch(function(){return{}})}).then(function(d){if(d&&d.ok){f.reset();if(b){b.disabled=false;b.textContent=t}document.getElementById('formSuccess').classList.add('show')}else{throw 0}}).catch(function(){msg('Odeslání se nepodařilo. Zkuste to prosím znovu nebo zavolejte.',1);if(b){b.disabled=false;b.textContent=t}})});})();
 </script>
 </body>
 </html>
