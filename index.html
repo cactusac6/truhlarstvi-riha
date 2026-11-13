@@ -787,7 +787,6 @@ footer{background:var(--slate-deep);color:#D8CFC1;padding:80px 0 34px;position:r
       <form class="form-grid" id="contactForm" action="https://forms.build-offer.cz/api/contact" method="POST">
 <input type="hidden" name="_site" value="riha">
         <input type="hidden" name="_subject" value="Nová poptávka z webu Truhlářství Říha">
-        <input type="hidden" name="_template" value="table">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="field"><label>Jméno</label><input type="text" name="Jméno" required placeholder="Vaše jméno"></div>
         <div class="field"><label>Telefon</label><input type="tel" name="Telefon" required placeholder="+420"></div>
@@ -1268,7 +1267,7 @@ document.addEventListener('keydown', e=>{
   if(e.key === 'Escape' && legalModal.classList.contains('open')) closeLegal();
 });
 
-/* ---------- Contact form (FormSubmit) ---------- */
+/* ---------- Contact form ---------- */
 if(new URLSearchParams(location.search).get('sent') === '1'){
   document.getElementById('formSuccess').classList.add('show');
   history.replaceState(null, '', location.pathname + location.hash);
